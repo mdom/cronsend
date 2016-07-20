@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+update(){
+	cron_file='etc/cron.d/cronsend'
+	user='root'
+	temp_file=$(mktemp)
+
+	trap "rm -f \"$temp_file\"" EXIT
+
+	printf "# autogenerate by update-mail-reminder\n" > "$temp_file";
+
+	for mail in etc/cronsend/*;do
+		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
+		do
+			printf "$cron $user cronsend-mail $mail\n" >> "$temp_file"
+		done
+	done
+
+	mv "$temp_file" "$cron_file"
+}
+
+mail(){
+	for mail;do
+		[ -e "$mail" ] || continue
+		formail -fI X-Cron < "$mail" | sendmail -t
+	done
+}
+
+usage(){
+	printf "Usage: \n" >&2
+	printf "  ${0##*/} update\n" >&2
+	printf "  ${0##*/} mail FILE\n" >&2
+	exit 1
+}
+
+if [ "$#" -lt 1 ];then
+	usage
+fi
+
+mode=$1
+shift
+
+case $mode in
+	update ) update;;
+	mail   ) mail "$@";;
+	*      ) usage;;
+esac
+
+exit 0

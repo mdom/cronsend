@@ -1,1 +1,1 @@
-dist_bin_SCRIPTS = bin/cronsend-mail bin/cronsend-update
+dist_bin_SCRIPTS = bin/cronsend
