@@ -5,9 +5,9 @@ use warnings;
 use File::Temp qw(tempfile);
 use File::Copy qw(move);
 
-@ARGV = glob('/etc/mail-reminder/*');
+@ARGV = glob('/etc/cronsend/*');
 
-my $cron_file = '/etc/cron.d/mail-reminder';
+my $cron_file = '/etc/cron.d/cronsend';
 
 my ( $fh, $filename ) = tempfile( UNLINK => 1 );
 print {$fh} "# autogenerate by update-mail-reminder\n\n";
@@ -18,7 +18,7 @@ while (<>) {
         my ( $key, $val ) = split( ': ', $_, 2 );
         if ( defined $key and $key eq 'X-Cron' ) {
             print {$fh}
-              "$entry robbie /usr/local/bin/send-mail-reminder $ARGV\n";
+              "$entry robbie /usr/local/bin/cronsend-mail $ARGV\n";
         }
     }
     else {
