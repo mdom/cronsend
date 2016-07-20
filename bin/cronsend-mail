@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for mail;do
+	[ -e "$mail" ] || continue
+	formail -fI X-Cron < "$mail" | sendmail -t
+done
