@@ -1,4 +1,4 @@
-= cronsend
+# cronsend
 
 cronsend sends reminder mail via a custom mail header, cron and
 sendmail. Just put reminder mails with their headers in _/etc/cronsend/_ and
@@ -15,7 +15,7 @@ _/etc/cron.d/cronsend_.  The cron header is stripped before the mail
 is sent. You can change any of the following configuration variables
 in _/etc/cronsendrc_.
 
-= Variables
+# Variables
 
 * cron\_file
 
@@ -29,7 +29,7 @@ Defines the username field for cron. Defaults to _root_.
 
 Directory with the mail files. Defaults to _/etc/cronsend/_.
  
-# COPYRIGHT AND LICENSE
+# Copyright and license
 
 Copyright 2016 Mario Domgoergen <mario@domgoergen.com>
 
