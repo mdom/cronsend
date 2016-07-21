@@ -2,16 +2,18 @@
 
 set -e
 
+cron_file='etc/cron.d/cronsend'
+user='root'
+mail_dir='/etc/cronsend/'
+
 update(){
-	cron_file='etc/cron.d/cronsend'
-	user='root'
 	temp_file=$(mktemp)
 
 	trap "rm -f \"$temp_file\"" EXIT
 
 	printf "# autogenerate by update-mail-reminder\n" > "$temp_file";
 
-	for mail in etc/cronsend/*;do
+	for mail in "$mail_dir"/*;do
 		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
 		do
 			printf "$cron $user cronsend mail $mail\n" >> "$temp_file"
