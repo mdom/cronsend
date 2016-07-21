@@ -5,6 +5,9 @@ set -e
 cron_file='etc/cron.d/cronsend'
 user='root'
 mail_dir='/etc/cronsend/'
+config_file='/etc/cronsendrc'
+
+[ -e "$config_file" ] && . "$config_file"
 
 update(){
 	temp_file=$(mktemp)
