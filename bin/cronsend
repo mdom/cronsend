@@ -14,7 +14,7 @@ update(){
 	for mail in etc/cronsend/*;do
 		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
 		do
-			printf "$cron $user cronsend-mail $mail\n" >> "$temp_file"
+			printf "$cron $user cronsend mail $mail\n" >> "$temp_file"
 		done
 	done
 
