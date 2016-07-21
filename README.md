@@ -12,22 +12,29 @@ add special _X-Cron_-Header with the cron time fields. For example:
 
 Calling ``cronsend update`` will create a crontab file under
 _/etc/cron.d/cronsend_.  The cron header is stripped before the mail
-is sent. You can change any of the following configuration variables
-in _/etc/cronsendrc_.
+is sent.
 
-# Variables
+# Configuration
+
+You can set the following variables in _/etc/cronsendrc_ with shell syntax:
 
 * cron\_file
 
-Where to create the cronfile. Defaults to _/etc/cron.d/cronsend_.
+  Where to create the cronfile. Defaults to _/etc/cron.d/cronsend_.
 
 * user
 
-Defines the username field for cron. Defaults to _root_.
+  Defines the username field for cron. Defaults to _root_.
 
-* mail_dir
+* mail\_dir
 
-Directory with the mail files. Defaults to _/etc/cronsend/_.
+  Directory with the mail files. Defaults to _/etc/cronsend/_.
+
+For example:
+
+    cron_file=cron.include
+    user=foo
+    mail_dir=/var/spool/cronsend
  
 # Copyright and license
 
