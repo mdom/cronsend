@@ -1,0 +1,15 @@
+Source: cronsend
+Section: mail
+Priority: optional
+Maintainer: Mario Domgoergen <mario@domgoergen.com>
+Build-Depends: debhelper (>= 9), autotools-dev
+Standards-Version: 3.9.5
+Homepage: <insert the upstream URL, if relevant>
+Vcs-Git: https://github.com/mdom/cronsend.git
+Vcs-Browser: https://github.com/mdom/cronsend
+
+Package: cronsend
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, procmail
+Description: send reminder mails
+ cronsend sends reminder mail via a custom mail header, cron and sendmail.
