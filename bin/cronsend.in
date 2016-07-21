@@ -2,6 +2,10 @@
 
 set -e
 
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+
 cron_file='etc/cron.d/cronsend'
 user='root'
 mail_dir='/etc/cronsend/'
@@ -19,7 +23,7 @@ update(){
 	for mail in "$mail_dir"/*;do
 		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
 		do
-			printf "$cron $user cronsend mail $mail\n" >> "$temp_file"
+			printf "$cron $user "$bindir/cronsend" mail $mail\n" >> "$temp_file"
 		done
 	done
 

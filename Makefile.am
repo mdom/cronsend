@@ -1,1 +1,2 @@
-dist_bin_SCRIPTS = bin/cronsend
+bin_SCRIPTS = bin/cronsend
+CLEANFILES = $(bin_SCRIPTS)
