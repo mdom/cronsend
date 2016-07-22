@@ -35,7 +35,7 @@ update(){
 mail(){
 	for mail;do
 		[ -e "$mail" ] || continue
-		formail -fI X-Cron < "$mail" | sendmail -t
+		formail -fI X-Cron < "$mail" | /usr/sbin/sendmail -t
 	done
 }
 
