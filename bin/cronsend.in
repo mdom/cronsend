@@ -13,12 +13,14 @@ config_file='/etc/cronsendrc'
 
 [ -e "$config_file" ] && . "$config_file"
 
+mail_dir="${mail_dir%/}"
+
 update(){
 	temp_file=$(mktemp)
 
 	trap "rm -f \"$temp_file\"" EXIT
 
-	printf "# autogenerate by update-mail-reminder\n" > "$temp_file";
+	printf "# autogenerate by cronsend update\n" > "$temp_file";
 
 	for mail in "$mail_dir"/*.mail;do
 		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
