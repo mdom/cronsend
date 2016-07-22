@@ -20,7 +20,7 @@ update(){
 
 	printf "# autogenerate by update-mail-reminder\n" > "$temp_file";
 
-	for mail in "$mail_dir"/*;do
+	for mail in "$mail_dir"/*.mail;do
 		formail -fcx X-Cron < "$mail" | sed 's/^ //' | while read cron
 		do
 			printf "$cron $user "$bindir/cronsend" mail $mail\n" >> "$temp_file"

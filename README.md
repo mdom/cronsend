@@ -11,8 +11,11 @@ add special _X-Cron_-Header with the cron time fields. For example:
     Hey you, better hurry!
 
 Calling ``cronsend update`` will create a crontab file under
-_/etc/cron.d/cronsend_.  The cron header is stripped before the mail
+_/etc/cron.d/cronsend_.   The cron header is stripped before the mail
 is sent.
+
+All mail files must have the suffix _.mail_ to filter out any editor
+backup files.
 
 # Configuration
 
