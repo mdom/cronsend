@@ -1,8 +1,4 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@  --with autotools-dev --with autoreconf
-
-
-
-
+	dh $@
