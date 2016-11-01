@@ -64,6 +64,7 @@ sub update {
       or die "Can't open mail dir $config{mail_dir}\n";
 
     my ( $fh, $tempfile ) = tempfile;
+    print {$fh} "# autogenerate by cronsend update\n"
     for ( sort readdir $dh ) {
         next if /^\.\.?/;
         next if !/\.mail$/;
